@@ -7,14 +7,19 @@ public class BirthdayTokenizer {
         Scanner scanner = new Scanner(System.in);
         String birthday = scanner.nextLine();
 
-        tokenizeBirthday(birthday);
+        String[] tokens = tokenizeBirthday(birthday);
+
+        System.out.println("Your birthday is on:\nMonth " + tokens[0] + "\nDay " + tokens[1] + "\nYear " + tokens[2]);
 
     }
 
     static String[] tokenizeBirthday(String birthday) {
-        String[] finalArr = null;
+        String[] finalArr = new String[3];
         StringTokenizer tokenizer = new StringTokenizer(birthday, "/");
-        System.out.println(tokenizer.countTokens());
+        int j = tokenizer.countTokens();
+        for (int i=0; i<j; i++) {
+            finalArr[i] = tokenizer.nextToken("/");
+        }
 
         return finalArr;
     }
